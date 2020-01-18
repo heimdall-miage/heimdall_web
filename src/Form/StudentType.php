@@ -24,7 +24,12 @@ class StudentType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $url = $this->router->generate('student_get_photo', ['id' => $options['userId']]);
+        if(strcmp($options['userId'], 'new') === 0){
+            $url = '';
+        }
+        else{
+            $url = $this->router->generate('student_get_photo', ['id' => $options['userId']]);
+        }
         $builder
             ->add('username', TextType::class, [
                 'label' => 'Numéro étudiant'

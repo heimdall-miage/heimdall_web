@@ -120,7 +120,7 @@ class StudentController extends AbstractController
     public function new(Request $request): Response
     {
         $student = new Student();
-        $form = $this->createForm(StudentType::class, $student, ['userId' => $student->getId()]);
+        $form = $this->createForm(StudentType::class, $student, ['userId' => 'new']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
